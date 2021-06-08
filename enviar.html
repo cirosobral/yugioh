@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar mensagem</title>
+    
+</head>
+<body>
+    <input id="cep" type="text" placeholder="CEP">
+    <button type="submit">Buscar</button><br>
+    <input id="cidade" type="text" placeholder="Cidade" readonly>
+
+    <script>
+        var buscar = document.querySelector('button')
+        var input = document.querySelector('#cep')
+        var output = document.querySelector('#cidade')
+
+        buscar.addEventListener('click', function(e) {
+            console.log('Aconteceu o click')
+
+            carregaCEP(input.value)
+        })
+
+        function carregaCEP(cep) {
+            var requestOptions = {
+                method: 'GET',
+                redirect: 'follow'
+            };
+
+            fetch(`http://viacep.com.br/ws/${cep}/json/`, requestOptions)
+                .then(response => response.text())
+                .then(result => {
+                    cepObj = JSON.parse(result)
+                    console.log(cepObj.localidade)
+
+                    output.value = cepObj.localidade
+                })
+                .catch(error => console.log('error', error));
+        }
+    </script>
+</body>
+</html>
