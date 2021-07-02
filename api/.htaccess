@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]+)/?(.*)$ $1.php?path=/$2 [QSA,NC,L]
+
+# a/123 -> a.php?path=123
+# POST usuario/12345/pedidos -> usuario.php?path=/12345/pedidos
+# /12345/pedidos -> ['', '12345', 'pedidos']
