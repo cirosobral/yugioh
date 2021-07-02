@@ -9,4 +9,6 @@ curl_setopt($ch, CURLOPT_HEADER, FALSE);
 $response = curl_exec($ch);
 curl_close($ch);
 
+header("Access-Control-Allow-Origin: *");
+
 echo $response;

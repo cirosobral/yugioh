@@ -1,5 +1,3 @@
-var x;
-
 // Adicionado um eventlistener para esperar o conteúdo da página ser completamente carregado ANTES da execução do script
 document.addEventListener('DOMContentLoaded', ()=> {
     // Usa a API do DOM para selecionar um elemento da página
